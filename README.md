@@ -11,11 +11,13 @@ Implementation in c that simulates the behavior of the proposal's instructions.
 
 QDMAES supports 4 experimental options for IME approach:
 * Option A - One matrix per vector
-  * ll registers store just one square tile of the matrix, e.g. [λ] x [λ], where λ is the floor of VLEN/ELEMENT_WIDTH
+  * All registers store just one square tile of the matrix, e.g. [λ] x [λ], where λ is the floor of VLEN/ELEMENT_WIDTH
 * Option A* - Common-Type Variant
   * Variation of the Option A proposed by José Moreira, where he attacks the cases when a single square tile is not capable of fullying a register, in this way, the registers stores two square tile, one on top of the other, forming a rectangular block.
   * To validate the execution, each MAC instruction consumes two registers from matrix A and one from matrix B, in this way, when the registers store two blocks, the number of registers allocated to store data from matrix A is double
 * Option C* - Multiple matrices per register
+  * Variation of the Option C proposed by José Moreira, where he attacks the cases when a single square tile is not capable of fullying a register, in this way, the registers stores multiples square tile (L), one on top of the other, forming a rectangular block.
+  * In this simulator, only cases where L assumes the values ​​of 1 and 2 are implemented, always opting for the lowest value that fills the register
 * Option E - Variable matrix representation
 
 
