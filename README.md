@@ -1,6 +1,7 @@
 # QDMAES - Quick and Dirty Matrix Architecture Engine Simulator
 
 QDMAES is a C-based implementation designed to simulate the behavior of proposed matrix instruction sets. Below are the key features and capabilities of QDMAES:
+
 * Intrinsic-Like Functions for Instructions: The instructions within QDMAES are represented as intrinsic-like functions, providing a clear and concise way to simulate complex matrix operations.
 * Support for Arbitrary Size Matrix Multiplication Routines: QDMAES supports matrix multiplication routines of any shape
 * Support for Grouping Matrix Multiplication Routines: The simulator allows for the grouping of matrix multiplication routines, enabling users to execute multiple operations as a single grouped instruction. 
@@ -9,7 +10,10 @@ QDMAES is a C-based implementation designed to simulate the behavior of proposed
 * Potential Future Integration with QEMU: There are plans for future integration with QEMU.
 
 
+# Options supports
+
 QDMAES supports four experimental options for the IME approach:
+
 * Option A - One matrix per vector
   * In this configuration, all registers are designed to store a single square tile of the matrix. This tile is represented as [λ] x [λ], where λ is the floor value of VLEN divided by ELEMENT_WIDTH. This approach ensures that each register holds one square tile of the matrix, facilitating straightforward matrix operations.
 * Option A* - Common-Type Variant
