@@ -19,6 +19,10 @@ QDMAES supports four experimental options for the IME approach:
   * This variation of Option C, also proposed by José Moreira, tackles situations where a single square tile does not fully occupy a register. In this approach, registers store multiple square tiles (denoted as L), stacked one on side of the other to form a rectangular block.
   * In the current simulator implementation, only cases where L assumes the values of 1 or 2 are considered, always opting for the lowest value that fills the register. 
 * Option E - Variable matrix representation
+  * This configuration is designed to support a variable number of square tiles per register, denoted as SEGS. Each tile is represented as [2] x [2].
+  * This approach differs from other options by providing two distinct representations for the data stored in the registers. Frist one for data form matrix A, where the registers store multiple tiles, one placed on top of the other, and the second one for data from matrix B, where the registers store multiple tiles, placed side by side.
+  * By allowing different stacking methods for matrices A and B, this configuration minimizes the number of registers needed for input data. With fewer registers allocated for input data, this configuration can allocate more registers for accumulation purposes.
+
 
 
 # Installing QDMAES
