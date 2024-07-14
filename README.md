@@ -14,7 +14,7 @@ QDMAES supports four experimental options for the IME approach:
   * In this configuration, all registers are designed to store a single square tile of the matrix. This tile is represented as [λ] x [λ], where λ is the floor value of VLEN divided by ELEMENT_WIDTH. This approach ensures that each register holds one square tile of the matrix, facilitating straightforward matrix operations.
 * Option A* - Common-Type Variant
   * This variation of Option A, proposed by José Moreira, addresses scenarios where a single square tile is insufficient to fully occupy a register. In this modified approach, registers store two square tiles, one placed on top of the other, thereby forming a rectangular block.
-  * To validate the execution in this configuration, each MAC (Multiply-Accumulate) instruction consumes two registers from matrix A and one register from matrix B. Consequently, when registers store two blocks, the number of registers allocated to store data from matrix A is doubled.
+  * To validate the execution in this configuration, each MMAC (Matrix Multiply Accumulate) instruction consumes two registers from matrix A and one register from matrix B. Consequently, when registers store two blocks, the number of registers allocated to store data from matrix A is doubled.
 * Option C* - Multiple matrices per register
   * This variation of Option C, also proposed by José Moreira, tackles situations where a single square tile does not fully occupy a register. In this approach, registers store multiple square tiles (denoted as L), stacked one on side of the other to form a rectangular block.
   * In the current simulator implementation, only cases where L assumes the values of 1 or 2 are considered, always opting for the lowest value that fills the register. 
@@ -71,7 +71,7 @@ Each proposal within the QDMAES framework is characterized by specific values fo
 After the simulation is completed, the user is presented with a description of the configuration used during the simulation. The extracted information includes:
 * Block Size Allocated within the Vector Register: This metric indicates the size of the block that was allocated within each vector register during the simulation. Understanding the block size is crucial for analyzing how efficiently the register space was utilized and how the matrix tiles were mapped onto the hardware. 
 * Computational Intensity Value for the Simulated Configuration: The computational intensity value represents the ratio of arithmetic operations to memory operations for the given configuration.
-* Number of FMMAC Instructions Dispatched: This parameter reflects the total number of Floating Point Multiply Accumulate (FMMAC) instructions that were dispatched during the simulation.
+* Number of FMMAC Instructions Dispatched: This parameter reflects the total number of Floating Point Matrix Multiply Accumulate (FMMAC) instructions that were dispatched during the simulation.
 * Number of MAC Operations Performed: The number of Multiply-Accumulate (MAC) operations performed during the simulation.
 
 By gathering and analyzing this information, we aim to:
