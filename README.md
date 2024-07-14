@@ -23,19 +23,24 @@ QDMAES supports four experimental options for the IME approach:
 
 # Installing QDMAES
 
-Run these steps to install QDMAES:  
+To install QDMAES, follow these steps.
+
+First, clone the QDMAES repository from GitHub:
 ```
 git clone https://github.com/MPU-Research/QDMAES-IME.git
 cd QDMAES-IME
 ```
 
-Run the steps below to set up the expecific option, this step will be responsible for compile and execute the code:
+Next, set up the specific option for your simulation. This step involves compiling and executing the code:
+
 ```
 cd ExpecificOptionPATH/
 make all
 ```
 
-After that, it is expected that the simulation of the proposal is complete and that a description of the configuration used is presented to the user.
+Replace ```SpecificOptionPATH``` with the appropriate directory path for the specific option you wish to set up.
+
+After running the above commands, the simulation of the proposed matrix architecture should be complete. The system will compile the necessary files and execute the code based on the selected option. Upon successful execution, you should see a description of the configuration used in the simulation. This output provides details about the specific matrix architecture and instructions being simulated.
 
 # QDMAES Components
 
