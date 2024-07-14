@@ -5,6 +5,7 @@ Implementation in c that simulates the behavior of the proposal's instructions.
 * Support for arbitrary size matrix multiplication routines
 * Supports grouping matrix multiplication routines
 * Allows for quick prototyping
+* Allows the study of potential new performance metrics
 * Potential future integration with QEMU
 
 
