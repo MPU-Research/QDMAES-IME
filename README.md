@@ -9,15 +9,15 @@ Implementation in c that simulates the behavior of the proposal's instructions.
 * Potential future integration with QEMU
 
 
-QDMAES supports 4 experimental options for IME approach:
+QDMAES supports four experimental options for the IME approach:
 * Option A - One matrix per vector
-  * All registers store just one square tile of the matrix, e.g. [λ] x [λ], where λ is the floor of VLEN/ELEMENT_WIDTH
+  * In this configuration, all registers are designed to store a single square tile of the matrix. This tile is represented as [λ] x [λ], where λ is the floor value of VLEN divided by ELEMENT_WIDTH. This approach ensures that each register holds one square tile of the matrix, facilitating straightforward matrix operations.
 * Option A* - Common-Type Variant
-  * Variation of the Option A proposed by José Moreira, where he attacks the cases when a single square tile is not capable of fullying a register, in this way, the registers stores two square tile, one on top of the other, forming a rectangular block.
-  * To validate the execution, each MAC instruction consumes two registers from matrix A and one from matrix B, in this way, when the registers store two blocks, the number of registers allocated to store data from matrix A is double
+  * This variation of Option A, proposed by José Moreira, addresses scenarios where a single square tile is insufficient to fully occupy a register. In this modified approach, registers store two square tiles, one placed on top of the other, thereby forming a rectangular block.
+  * To validate the execution in this configuration, each MAC (Multiply-Accumulate) instruction consumes two registers from matrix A and one register from matrix B. Consequently, when registers store two blocks, the number of registers allocated to store data from matrix A is doubled.
 * Option C* - Multiple matrices per register
-  * Variation of the Option C proposed by José Moreira, where he attacks the cases when a single square tile is not capable of fullying a register, in this way, the registers stores multiples square tile (L), one on top of the other, forming a rectangular block.
-  * In this simulator, only cases where L assumes the values ​​of 1 and 2 are implemented, always opting for the lowest value that fills the register
+  * This variation of Option C, also proposed by José Moreira, tackles situations where a single square tile does not fully occupy a register. In this approach, registers store multiple square tiles (denoted as L), stacked one on side of the other to form a rectangular block.
+  * In the current simulator implementation, only cases where L assumes the values of 1 or 2 are considered, always opting for the lowest value that fills the register. 
 * Option E - Variable matrix representation
 
 
