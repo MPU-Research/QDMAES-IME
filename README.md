@@ -29,7 +29,7 @@ cd ExpecificOptionPATH/
 make all
 ```
 
-After that, is expected to have 
+After that, it is expected that the simulation of the proposal is complete and that a description of the configuration used is presented to the user.
 
 # QDMAES Components
 
