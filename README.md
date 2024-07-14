@@ -45,7 +45,7 @@ Major Components of interest include:
 
 # Optimal grouping configuration
 
-Each proposal has a specific number for mmol and nlmul that achieves maximum computation intensity, however the simulator only supports integer values. Therefore, below are the maximum values ​​supported for each proposal:
+Each proposal has a specific number for mlmul and nlmul that achieves maximum computation intensity, however the simulator only supports integer values. Therefore, below are the maximum values ​​supported for each proposal:
 
 
 | VLEN | OptA | OptA* | OptC* | OptE |
@@ -56,4 +56,12 @@ Each proposal has a specific number for mmol and nlmul that achieves maximum com
 | 1024 | 5 / 4 | 3 / 6 | 5 / 4 | 3 / 1 |
 | 2048 | 5 / 4 | 5 / 4 | 5 / 4 | 1 / 1 |
 
+# Extracted information
 
+After the simulation is completed, some description of the configuration used is presented to the user, which includes:
+* The size of the block allocated within the vector register
+* The computational intensity value for the simulated configuration
+* The number of fmmac instructions dispatched
+* The number of MAC operations performed
+
+With this information, we want to identify patterns and hidden performance metrics
