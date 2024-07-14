@@ -46,17 +46,16 @@ After running the above commands, the simulation of the proposed matrix architec
 
 Major Components of interest include:
 
-* **high_level_model.c**: The top-level file that includes the calls the functions to compare the results of the option behaviors of the accelerator and the naive algorithm. This file also includes the description of the grouping (e.g., ```mlmul``` and ```nlmul```) and the ```matrix dimensions```.
-* **lib.h**: The file that includes the simulated accelerator kernel.
-* **mpu.c**: The file that includes the implementation of the accelerator.
-* **mpu.h**: The file that includes the parameters of the accelerator.
-  * Major parameters include the number of ```VLEN```, in bits, and the number of vector register.
-* **basic_helpers.h**: The file that includes the helper functions for the naive algorithm.
+* **high_level_model.c**: This is the top-level file responsible for coordinating the simulation. It includes calls to functions that compare the behaviors of different options of the accelerator against the naive algorithm. Additionally, this file describes the grouping operations (such as mlmul and nlmul) and specifies the matrix dimensions used in the simulation.
+* **lib.h**: This file contains the simulated accelerator kernel. It includes the necessary functions and definitions required to emulate the behavior of the accelerator within the simulation environment. 
+* **mpu.c**: This file implements the accelerator's functionality. It contains the core logic and algorithms that define how the accelerator processes matrix operations.
+* **mpu.h**: This header file defines the parameters of the accelerator. Key parameters include the number of ```VLEN``` (Vector Length, in bits) and the ```number of vector registers```. 
+* **basic_helpers.h**: This file includes helper functions for the naive algorithm. These functions support the basic operations and computations required for the naive approach to matrix multiplication. 
  
 
 # Optimal grouping configuration
 
-Each proposal has a specific number for mlmul and nlmul that achieves maximum computation intensity, however the simulator only supports integer values. Therefore, below are the maximum values ​​supported for each proposal:
+Each proposal within the QDMAES framework is characterized by specific values for mlmul and nlmul that achieve maximum computational intensity. These values are critical for optimizing the performance of matrix multiplications. However, it is important to note that the simulator only supports integer values for these parameters. Below are the maximum integer values supported for each proposal:
 
 
 | VLEN | OptA | OptA* | OptC* | OptE |
@@ -69,10 +68,13 @@ Each proposal has a specific number for mlmul and nlmul that achieves maximum co
 
 # Extracted information
 
-After the simulation is completed, some description of the configuration used is presented to the user, which includes:
-* The size of the block allocated within the vector register
-* The computational intensity value for the simulated configuration
-* The number of fmmac instructions dispatched
-* The number of MAC operations performed
+After the simulation is completed, the user is presented with a description of the configuration used during the simulation. The extracted information includes:
+* Block Size Allocated within the Vector Register: This metric indicates the size of the block that was allocated within each vector register during the simulation. Understanding the block size is crucial for analyzing how efficiently the register space was utilized and how the matrix tiles were mapped onto the hardware. 
+* Computational Intensity Value for the Simulated Configuration: The computational intensity value represents the ratio of arithmetic operations to memory operations for the given configuration.
+* Number of FMMAC Instructions Dispatched: This parameter reflects the total number of Floating Point Multiply Accumulate (FMMAC) instructions that were dispatched during the simulation.
+* Number of MAC Operations Performed: The number of Multiply-Accumulate (MAC) operations performed during the simulation.
 
-With this information, we want to identify patterns and hidden performance metrics
+By gathering and analyzing this information, we aim to:
+
+* Identify Patterns: Recognize recurring trends and behaviors in the simulation data, which can provide insights into the optimal configurations and performance characteristics of the accelerator.
+* Uncover Hidden Performance Metrics: Reveal subtle and non-obvious metrics that may influence the overall performance. These hidden metrics can guide future optimizations and enhancements in matrix architecture design.
